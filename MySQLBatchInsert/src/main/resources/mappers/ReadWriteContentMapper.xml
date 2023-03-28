@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cc.ljb.mysqlbatchinsert.mapper.ReadWriteContentMapper">
+    <insert id="writeContent">
+        INSERT INTO pste(name, title, author, age, address, class_id)
+        VALUES (#{entity.name}, #{entity.title}, #{entity.author}, #{entity.age}, #{entity.address}, #{entity.classId})
+    </insert>
+
+    <insert id="batchInsert" parameterType="ArrayList">
+        insert into pste
+        (name, title, author, age, address, class_id)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.name},
+            #{item.title},
+            #{item.author},
+            #{item.age},
+            #{item.address},
+            #{item.classId}
+            )
+        </foreach>
+    </insert>
+
+</mapper>
