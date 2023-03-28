@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cc.ljb.mysql.mapper.ReadWriteContentMapper">
+    <select id="getContent" resultType="cc.ljb.mysql.entity.ReadWriteContentEntity">
+        SELECT *
+        FROM pste
+        WHERE id = #{id}
+    </select>
+    <insert id="writeContent">
+        INSERT INTO pste(name, title, author)
+        VALUES (#{entity.name}, #{entity.title}, #{entity.author});
+    </insert>
+
+</mapper>
